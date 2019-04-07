@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mantis.cicada.dao.AuthorDao">
+
+	<select id="queryAll" resultType="Author">
+		SELECT * FORM author
+	</select>
+	
+	<select id="queryById" resultType="Author">
+		SELECT * FORM author
+		<where>
+			author_id=#{authorId}
+		</where>
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO author(
+        author_name,
+        birth_date,
+        birth_palace,
+        nationality, 
+        sex) values(
+        #{authorName},
+        #{birthDate},
+        #{birthPalace},
+        #{nationality},
+        #{sex}) 
+	</insert>
+
+   	<delete id="delete">
+		DELETE * FORM author where author_id=#{authorId}
+	</delete>
+	
+   	<update id="update">
+   		UPDATE author
+		<set>
+			<if test="authorName != null">
+				author_name=#{authorName}
+			</if>
+			<if test="birthDate != null">
+				birth_date=#{birthDate}
+			</if>
+			<if test="birthPalace != null">
+				birth_palace=#{birthPalace}
+			</if>
+			<if test="publicDate != null">
+				nationality=#{nationality}
+			</if>
+			<if test="sex != null">
+				sex=#{sex}
+			</if>
+		</set>
+	</update>
+
+
+</mapper>
